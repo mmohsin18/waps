@@ -60,7 +60,6 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="mx-auto flex min-h-screen flex-col">
           <main className="grow flex flex-col">{children}</main>
-
           <SiteFooter />
         </div>
       </body>

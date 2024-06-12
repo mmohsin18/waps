@@ -15,20 +15,23 @@ export default function page() {
         width={250}
         height={250}
         alt="offline"
-        src={"/images/Loading-Time.svg"}
+        src={"/images/Fast-Internet.svg"}
       />
       <h2 className="mt-2 text-center  text-2xl font-semibold font-mono">
-        Oops! It Looks Like You're Offline
+        Oops! Page Not Found
       </h2>
+      <p className="text-sm opacity-50">
+        Sorry, we can't find the page you're looking for.
+      </p>
 
       <button
         className="cursor-pointer mt-8"
         type="button"
-        onClick={() => router.back()}
+        onClick={() => router.push("/")}
       >
         <div className="flex items-center">
           <span className="text-2xl font-semibold font-mono underline">
-            Retry
+            Go to Home Page
           </span>
           <RotateCw className="ml-2" width={21} height={21} />
         </div>

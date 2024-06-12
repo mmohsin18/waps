@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="container flex min-h-screen flex-col items-center ">
+    <div className="container flex flex-col items-center ">
       <h2 className="mt-32 text-center mb-3 text-2xl font-semibold">
         Next.js WPA Starter Kit
       </h2>
@@ -82,6 +82,6 @@ export default function Home() {
           </p>
         </a>
       </div>
-    </main>
+    </div>
   );
 }
