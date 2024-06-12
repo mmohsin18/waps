@@ -1,13 +1,14 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import SiteFooter from "@/components/site-footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const APP_NAME = "PWA App";
-const APP_DEFAULT_TITLE = "My Awesome PWA App";
+const APP_NAME = "Next PWA";
+const APP_DEFAULT_TITLE = "Next.js PWA Starter Kit";
 const APP_TITLE_TEMPLATE = "%s - PWA App";
-const APP_DESCRIPTION = "Best PWA app in the world!";
+const APP_DESCRIPTION = "Build your PWA easier";
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,
@@ -56,7 +57,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="mx-auto flex min-h-screen flex-col">
+          <main className="grow flex flex-col">{children}</main>
+
+          <SiteFooter />
+        </div>
+      </body>
     </html>
   );
 }

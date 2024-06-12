@@ -3,22 +3,22 @@
     "short_name": "PWA App",
     "icons": [
       {
-        "src": "/icons/icon-70x70.png",
+        "src": "/favicon/icon-70x70.png",
         "sizes": "70x70",
         "type": "image/png"
       },
       {
-        "src": "/icons/icon-144x144.png",
+        "src": "/favicon/icon-144x144.png",
         "sizes": "144x144",
         "type": "image/png"
       },
       {
-        "src": "/icons/icon-150x150.png",
+        "src": "/favicon/icon-150x150.png",
         "sizes": "150x150",
         "type": "image/png"
       }
       {
-        "src": "/icons/icon-310x310.png",
+        "src": "/favicon/icon-310x310.png",
         "sizes": "310x310",
         "type": "image/png"
       }
