@@ -5,7 +5,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { RotateCw } from "lucide-react";
 
-export default function page() {
+export default function Notfound() {
   const router = useRouter();
 
   return (
