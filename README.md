@@ -1,11 +1,11 @@
 # Next.js PWA Starter Kit
 
-Welcome to the Next.js PWA Starter Kit! This starter kit provides a foundation for building Progressive Web Apps (PWAs) using Next.js and the `next-pwa` plugin.
+Welcome to the Next.js PWA Starter Kit! This starter kit provides a foundation for building Progressive Web Apps (PWAs) using Next.js and the `Serwist` plugin.
 
 ## Features
 
 - **Next.js**: The React framework for production.
-- **PWA support**: Add offline capabilities and improve the performance of your app with `next-pwa`.
+- **PWA support**: Add offline capabilities and improve the performance of your app with `Serwist`.
 - **Tailwind CSS** : A utility-first CSS framework packed with classes
 - **TypeScript**: Optional, strongly typed language that builds on JavaScript.
 - **ESLint**: Linting for JavaScript and TypeScript.
