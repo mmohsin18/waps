@@ -10,7 +10,7 @@
     "format": "prettier --check . --write \"src/**/*{js,ts,css,scss,json,tsx,jsx,mdx,md}\" \"*.{js,ts,tsx,jsx,mdx,md}\""
   },
   "dependencies": {
-    "@ducanh2912/next-pwa": "^10.2.7",
+    "@serwist/next": "^9.0.3",
     "clsx": "^2.1.1",
     "lucide-react": "^0.394.0",
     "next": "14.2.3",
@@ -28,6 +28,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
+    "serwist": "^9.0.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }

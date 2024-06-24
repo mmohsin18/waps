@@ -50,19 +50,19 @@ export default function Home() {
           </p>
         </a>
         <a
-          href='https://ducanh-next-pwa.vercel.app/docs/next-pwa'
+          href='https://serwist.pages.dev/docs/next'
           className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
           target='_blank'
           rel='noopener noreferrer'
         >
           <h2 className='mb-3 text-2xl font-semibold'>
-            Next.js PWA
+            Serwist
             <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
               -&gt;
             </span>
           </h2>
           <p className='m-0 max-w-[30ch] text-sm opacity-50'>
-            next-pwa enables you to create PWAs with Next.js.
+            Collection of JavaScript libraries for progressive web apps.
           </p>
         </a>
         <a

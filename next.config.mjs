@@ -1,22 +1,12 @@
 /** @type {import('next').NextConfig} */
 
-import withPWAInit from '@ducanh2912/next-pwa'
+import withSerwistInit from "@serwist/next";
 
-const withPWA = withPWAInit({
-  // disable: process.env.NODE_ENV === 'development',
-  dest: 'public',
-  cacheOnFrontendNav: true,
-  aggressiveFrontEndNavCaching: true,
-  reloadOnOnline: true,
-  disable: false,
-  fallbacks: {
-    document: '/~offline'
-  }
-  // workboxOptions: {
-  //   disableDevLogs: true
-  // }
-})
+const withSerwist = withSerwistInit({
+    swSrc: "src/app/sw.ts",
+    swDest: "public/sw.js",
+});
 
 const nextConfig = {}
 
-export default withPWA(nextConfig)
+export default withSerwist(nextConfig)
