@@ -27,8 +27,8 @@ Make sure you have the following installed:
 1. Clone this repository:
 
    ```sh
-   git clone https://github.com/your-username/nextjs-pwa-starter-kit.git
-   cd nextjs-pwa-starter-kit
+   git clone https://github.com/hariadiarief/next-pwa-starter-kit.git
+   cd next-pwa-starter-kit
    ```
 
 2. Install the dependencies:
