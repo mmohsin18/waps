@@ -129,9 +129,12 @@ export default function LandingPage() {
               get smart descriptions via Scan.
             </p>
 
-            <div className='mt-6 flex items-center justify-center gap-3'>
+            <Link
+              href={'#waitlist'}
+              className='mt-6 flex items-center justify-center gap-3'
+            >
               <WapsButton variant='glow'>Join the Waitlist</WapsButton>
-            </div>
+            </Link>
           </motion.div>
 
           {/* Hero mock / device frame */}
@@ -312,7 +315,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <div className='mx-auto max-w-4xl px-5 pb-16 md:pb-24'>
+      <div id='wishlist' className='mx-auto max-w-4xl px-5 pb-16 md:pb-24'>
         <WaitlistForm source='hero' />
       </div>
 
