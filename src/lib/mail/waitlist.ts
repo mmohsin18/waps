@@ -23,9 +23,9 @@ export async function sendWaitlistConfirmationResend(
   const { to } = payload
   ensureEmail(to)
 
-  //const key = process.env.RESEND_API_KEY
-  //if (!key) throw new Error('RESEND_API_KEY is not set')
-  const resend = new Resend(process.env.RESEND_API_KEY)
+  const key = process.env.NEXT_PUBLIC_RESEND_API_KEY
+  if (!key) throw new Error('RESEND_API_KEY is not set')
+  const resend = new Resend(key)
 
   await resend.emails.send({
     from: BRAND.from,
