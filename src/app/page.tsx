@@ -130,7 +130,7 @@ export default function LandingPage() {
             </p>
 
             <Link
-              href={'#waitlist'}
+              href={'#wishlist'}
               className='mt-6 flex items-center justify-center gap-3'
             >
               <WapsButton variant='glow'>Join the Waitlist</WapsButton>
@@ -315,7 +315,10 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <div id='wishlist' className='mx-auto max-w-4xl px-5 pb-16 md:pb-24'>
+      <div
+        id='wishlist'
+        className='mx-auto flex max-w-4xl items-center justify-center px-5 pb-16 md:pb-24'
+      >
         <WaitlistForm source='hero' />
       </div>
 
