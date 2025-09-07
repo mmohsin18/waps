@@ -1,14 +1,14 @@
-import SiteFooter from '@/components/site-footer'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import { ConvexClientProvider } from './ConvexClientProvider'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const APP_NAME = 'Next PWA'
-const APP_DEFAULT_TITLE = 'Next.js PWA Starter Kit'
-const APP_TITLE_TEMPLATE = '%s - PWA App'
-const APP_DESCRIPTION = 'Build your PWA easier'
+const APP_NAME = 'Waps'
+const APP_DEFAULT_TITLE = 'Waps - Your Bookmarking Buddy'
+const APP_TITLE_TEMPLATE = '%s - Waps'
+const APP_DESCRIPTION = 'Your Bookmarking Buddy'
 
 export const metadata: Metadata = {
   applicationName: APP_NAME,
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#FFFFFF'
+  themeColor: '#FF4D2E'
 }
 
 export default function RootLayout({
@@ -56,11 +56,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <head>
+        <meta
+          name='viewport'
+          content='width=device-width, initial-scale=1, viewport-fit=cover'
+        />
+        <link rel='manifest' href='/manifest.webmanifest' />
+        <meta name='apple-mobile-web-app-capable' content='yes' />
+        <meta
+          name='apple-mobile-web-app-status-bar-style'
+          content='black-translucent'
+        />
+        <link rel='apple-touch-icon' href='/favicon/icon-192.png' />
+      </head>
       <body className={inter.className}>
-        <div className='mx-auto flex min-h-screen flex-col'>
-          <main className='flex grow flex-col'>{children}</main>
-          <SiteFooter />
-        </div>
+        <ConvexClientProvider>
+          <div className='mx-auto flex min-h-screen flex-col'>
+            <main className='flex grow flex-col'>{children}</main>
+            {/* <BottomNav /> */}
+          </div>
+        </ConvexClientProvider>
       </body>
     </html>
   )

@@ -1,42 +1,21 @@
 'use client'
 
-import { RotateCw } from 'lucide-react'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { WapsButton } from '@/components/Elements/WapsButton'
+import Link from 'next/link'
 
-export default function Notfound() {
-  const router = useRouter()
-
-  console.log({ env: process.env.NODE_ENV })
-
+export default function NotFound() {
   return (
-    <div className='container flex flex-col items-center'>
-      <Image
-        className='mt-32'
-        width={250}
-        height={250}
-        alt='offline'
-        src={'/images/Fast-Internet.svg'}
-      />
-      <h2 className='mt-2 text-center font-mono text-2xl font-semibold'>
-        Oops! Page Not Found
-      </h2>
-      <p className='text-sm opacity-50'>
-        Sorry, we can't find the page you're looking for.
+    <main className='flex min-h-screen flex-col items-center justify-center bg-[#0F0F10] p-6 text-white'>
+      <h1 className='text-6xl font-bold text-[#FF4D2E] drop-shadow-lg'>404</h1>
+      <p className='mt-4 text-lg text-white/70'>
+        This page could not be found.
       </p>
 
-      <button
-        className='mt-8 cursor-pointer'
-        type='button'
-        onClick={() => router.push('/')}
-      >
-        <div className='flex items-center'>
-          <span className='font-mono text-2xl font-semibold underline'>
-            Go to Home Page
-          </span>
-          <RotateCw className='ml-2' width={21} height={21} />
-        </div>
-      </button>
-    </div>
+      <div className='mt-6'>
+        <Link href='/'>
+          <WapsButton variant='glow'>Go Home</WapsButton>
+        </Link>
+      </div>
+    </main>
   )
 }
