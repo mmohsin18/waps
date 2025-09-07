@@ -30,7 +30,9 @@
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "workbox-core": "^7.3.0",
+    "workbox-precaching": "^7.3.0"
   },
   "devDependencies": {
     "@types/node": "^20",

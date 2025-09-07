@@ -17,6 +17,12 @@ export const metadata: Metadata = {
     template: APP_TITLE_TEMPLATE
   },
   description: APP_DESCRIPTION,
+  manifest: '/manifest.json',
+  themeColor: '#FF4D2E',
+  other: {
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent'
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -61,7 +67,7 @@ export default function RootLayout({
           name='viewport'
           content='width=device-width, initial-scale=1, viewport-fit=cover'
         />
-        <link rel='manifest' href='/manifest.webmanifest' />
+        <link rel='manifest' href='/manifest.json' />
         <meta name='apple-mobile-web-app-capable' content='yes' />
         <meta
           name='apple-mobile-web-app-status-bar-style'
