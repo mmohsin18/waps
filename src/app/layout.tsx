@@ -1,3 +1,4 @@
+import BottomNav from '@/components/Layout/BottomNav'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import { ConvexClientProvider } from './ConvexClientProvider'
@@ -79,7 +80,7 @@ export default function RootLayout({
         <ConvexClientProvider>
           <div className='mx-auto flex min-h-screen flex-col'>
             <main className='flex grow flex-col'>{children}</main>
-            {/* <BottomNav /> */}
+            <BottomNav />
           </div>
         </ConvexClientProvider>
       </body>

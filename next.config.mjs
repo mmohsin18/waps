@@ -10,6 +10,15 @@ const withSerwist = withSerwistInit({
 
 const nextConfig = {
   reactStrictMode: true,
+   images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+        pathname: "/**",
+      },
+    ],
+  },
   async headers() {
     return [
       // Make sure the browser always fetches the latest SW

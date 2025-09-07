@@ -6,7 +6,7 @@
   "lang": "en-US",
   "dir": "ltr",
   "scope": "/",
-  "start_url": "/?source=pwa",
+  "start_url": "/explore",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui"],
   "theme_color": "#FF4D2E",
