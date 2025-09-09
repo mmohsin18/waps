@@ -1,39 +1,43 @@
 import { Resend } from 'resend'
+import 'server-only'
 
-// ---------- Types ----------
 export type WaitlistPayload = {
   to: string
   name?: string | null
-  manageUrl?: string // e.g. a page to update preferences or view status
-  apkUrl?: string // optional: link to download the APK when ready
+  manageUrl?: string
+  apkUrl?: string
 }
 
 const BRAND = {
   product: process.env.BRAND_NAME ?? 'Waps',
   tagline: process.env.BRAND_TAGLINE ?? 'Your bookmarking buddy',
-  // used for <meta name="theme-color"> style in web; in email just for continuity
   theme: { start: '#FF6B57', end: '#FFB057', bg: '#0B0B10' },
-  from: process.env.CONTACT_FROM ?? 'Waps <hello@yourdomain.com>'
+  from: process.env.CONTACT_FROM ?? 'Waps <noreply@yourdomain.com>'
 }
 
-// ---------- Public API: RESEND ----------
-export async function sendWaitlistConfirmationResend(
-  payload: WaitlistPayload
-): Promise<void> {
-  const { to } = payload
-  ensureEmail(to)
+export async function sendWaitlistConfirmationResend(payload: WaitlistPayload) {
+  ensureEmail(payload.to)
 
-  const key = process.env.NEXT_PUBLIC_RESEND_API_KEY
-  if (!key) throw new Error('RESEND_API_KEY is not set')
+  const key = process.env.RESEND_API_KEY
+  if (!key) throw new Error('RESEND_API_KEY is not set') // ← most common
+
   const resend = new Resend(key)
 
-  await resend.emails.send({
+  const { data, error } = await resend.emails.send({
     from: BRAND.from,
-    to,
+    to: payload.to,
     subject: subjectLine(payload),
     html: renderWaitlistHtml(payload),
     text: renderWaitlistText(payload)
   })
+
+  if (error) {
+    // 🧭 show structured error — it often contains "Domain is not verified" etc.
+    const details = typeof error === 'string' ? error : JSON.stringify(error)
+    throw new Error(`Resend error: ${details}`)
+  }
+
+  return data
 }
 
 // ---------- Template (HTML) ----------

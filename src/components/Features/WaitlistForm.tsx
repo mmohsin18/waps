@@ -2,7 +2,6 @@
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { sendWaitlistConfirmationResend } from '@/lib/mail/waitlist'
 import { useMutation, useQuery } from 'convex/react'
 import { Check, Copy, Loader2, Mail, User } from 'lucide-react'
 import { useState } from 'react'
@@ -61,12 +60,6 @@ export default function WaitlistForm({ source }: { source?: string }) {
         referralCode: res.referralCode,
         position: res.position,
         total: res.total
-      })
-
-      await sendWaitlistConfirmationResend({
-        to: email,
-        name,
-        apkUrl: undefined // add later when available
       })
     } catch (e) {
       setErr(e instanceof Error ? e.message : 'Something went wrong.')
