@@ -36,7 +36,7 @@ export function WapCard({ item }: { item: any }) {
                 className='object-contain p-1.5'
               />
             ) : (
-              <div className='grid h-full w-full place-items-center text-xs text-white/90'>
+              <div className='grid h-full w-full place-items-center text-xs text-black/90'>
                 {hostname[0]?.toUpperCase()}
               </div>
             )}
@@ -44,22 +44,22 @@ export function WapCard({ item }: { item: any }) {
 
           {/* title & host */}
           <div className='min-w-0 flex-1'>
-            <CardTitle className='truncate text-[15px] font-semibold text-white'>
+            <CardTitle className='truncate text-[15px] font-semibold text-black'>
               {item.website.title || hostname}
             </CardTitle>
-            <p className='truncate text-xs text-white/60'>{hostname}</p>
+            <p className='truncate text-xs text-black/60'>{hostname}</p>
           </div>
 
           {/* menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className='rounded-lg p-2 hover:bg-white/10'>
-                <MoreVertical className='h-4 w-4 text-white/80' />
+                <MoreVertical className='h-4 w-4 text-black/80' />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align='end' className='waps-card rounded-xl'>
               <DropdownMenuItem
-                className='text-red-300 focus:bg-white/10'
+                className='text-red-600 focus:bg-white/10'
                 onClick={() =>
                   remove({ ownerKey: getOwnerKey(), boardItemId: item._id })
                 }
@@ -72,12 +72,12 @@ export function WapCard({ item }: { item: any }) {
         </div>
       </CardHeader>
 
-      <CardContent className='pt-2'>
+      <CardContent className='pt-2 text-black'>
         {/* chips */}
         {item.website.categories?.length ? (
-          <div className='mb-3 flex flex-wrap gap-1.5'>
+          <div className='mb-3 hidden flex-wrap gap-1.5'>
             {item.website.categories.slice(0, 3).map((t: string) => (
-              <span key={t} className='waps-chip'>
+              <span key={t} className=''>
                 {t}
               </span>
             ))}
@@ -104,9 +104,9 @@ export function WapCard({ item }: { item: any }) {
             asChild
             variant='outline'
             size='sm'
-            className='h-9 rounded-xl border border-white/15 text-white hover:bg-white/10'
+            className='h-9 rounded-xl border border-black/15 text-black hover:bg-black/10'
           >
-            <Link href={`/site/${item.website.slug}`}>Details</Link>
+            <Link href={`/explore/${item.website.slug}`}>Details</Link>
           </Button>
         </div>
       </CardContent>
