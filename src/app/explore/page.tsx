@@ -98,7 +98,7 @@ export default function ExplorePage() {
                   {rows.map(w => (
                     <WapCardSquare
                       key={`${category}-${w.origin}-${w.slug}`}
-                      href={`/waps/${w.slug}`}
+                      href={`/explore/${w.slug}`}
                       title={w.title}
                       subtitle={w.description}
                       origin={w.origin}

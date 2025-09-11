@@ -14,7 +14,7 @@ export default function BottomNav() {
   const pathname = usePathname()
 
   // Hide the navbar on the home page
-  if (!pathname || pathname === '/') return null
+  if (!pathname || pathname === '/' || pathname === '/auth') return null
 
   return (
     <nav className='fixed inset-x-0 bottom-0 z-50'>

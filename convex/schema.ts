@@ -36,7 +36,8 @@ export default defineSchema({
   })
     .index('by_ownerKey', ['ownerKey'])
     .index('by_boardId', ['boardId'])
-    .index('by_websiteId', ['websiteId']),
+    .index('by_websiteId', ['websiteId'])
+    .index('by_ownerKey_createdAt', ['ownerKey', 'createdAt']),
 
   websites: defineTable({
     slug: v.string(), // e.g. "notion"
@@ -81,5 +82,20 @@ export default defineSchema({
     .index('by_origin', ['origin'])
     .index('by_saveCount', ['saveCount'])
     .index('by_publicSaveCount', ['publicSaveCount'])
-    .index('by_createdAt', ['createdAt'])
+    .index('by_createdAt', ['createdAt']),
+
+  users: defineTable({
+    email: v.string(),
+    name: v.optional(v.string()),
+    passwordHash: v.string(),
+    createdAt: v.number(),
+    updatedAt: v.number()
+  }).index('by_email', ['email']),
+
+  sessions: defineTable({
+    token: v.string(), // opaque session token
+    userId: v.id('users'),
+    createdAt: v.number(),
+    expiresAt: v.number() // epoch ms
+  }).index('by_token', ['token'])
 })

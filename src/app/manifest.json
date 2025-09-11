@@ -5,9 +5,18 @@
   "description": "Your Bookmarking Buddy",
   "lang": "en-US",
   "dir": "ltr",
-  "scope": "/",
+  "scope": "/explore",
   "start_url": "/explore",
   "display": "standalone",
+  "share_target": {
+    "action": "/add",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
   "display_override": ["standalone", "minimal-ui"],
   "theme_color": "#FF4D2E",
   "background_color": "#0F0F10",
