@@ -3,10 +3,19 @@
 
 import { Badge } from '@/components/ui/badge'
 import { useAction, useMutation, useQuery } from 'convex/react'
-import { AlertTriangle, CheckCircle2, Loader2 } from 'lucide-react'
+import {
+  AlertTriangle,
+  CheckCircle2,
+  Globe,
+  Loader2,
+  PlusCircle
+} from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { api } from '../../../convex/_generated/api'
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
+import { Textarea } from '../ui/textarea'
 
 const SYSTEM_OWNER = 'seed'
 const SYSTEM_BOARD_SLUG = 'discover'
@@ -269,9 +278,182 @@ export default function AddWapClient() {
       style={{ background: ambientBg }}
     >
       <div className='mx-auto w-full max-w-screen-sm space-y-5'>
-        {/* … your JSX stays the same … */}
-        {/* (omitted for brevity; keep exactly what you posted) */}
+        {/* Header card */}
+        <div className='rounded-2xl border border-zinc-800 bg-zinc-900/60 p-4 backdrop-blur-xl'>
+          <div className='flex items-center gap-2'>
+            <div
+              className='grid h-9 w-9 place-items-center rounded-xl'
+              style={{
+                background: 'linear-gradient(135deg, #FF6B57, #FFB057)'
+              }}
+            >
+              <Globe className='h-5 w-5 text-white' />
+            </div>
+            <div className='min-w-0'>
+              <h1 className='font-semibold'>Add a website</h1>
+              <p className='text-xs text-zinc-400'>
+                This will be added to{' '}
+                <span className='text-zinc-200'>{SYSTEM_OWNER}</span>/
+                <span className='text-zinc-200'>{SYSTEM_BOARD_SLUG}</span>
+              </p>
+            </div>
+            <div className='ml-auto'>{badge}</div>
+          </div>
+
+          <div className='mt-3 flex items-center gap-2 rounded-xl border border-zinc-800 bg-zinc-900/70 px-3 py-2'>
+            <Input
+              value={rawUrl}
+              onChange={e => setRawUrl(e.currentTarget.value)}
+              placeholder='https://example.com/page'
+              className='h-9 border-0 bg-transparent px-0 placeholder:text-zinc-400 focus-visible:ring-0'
+              autoFocus
+            />
+          </div>
+
+          {normalized?.origin && (
+            <p className='mt-2 text-xs text-zinc-400'>
+              Checking homepage:{' '}
+              <span className='text-zinc-200'>
+                https://{normalized.origin}/
+              </span>
+            </p>
+          )}
+
+          {message && status !== 'error' && (
+            <p className='mt-2 text-xs text-zinc-400'>{message}</p>
+          )}
+        </div>
+
+        {/* Form card */}
+        <form
+          onSubmit={onSubmit}
+          className='space-y-4 rounded-2xl border border-zinc-800 bg-zinc-900/60 p-4 backdrop-blur-xl'
+        >
+          <Field label='Title'>
+            <Input
+              value={title}
+              onChange={e => {
+                const v = e.currentTarget.value
+                setTitle(v)
+                if (!slug) setSlug(slugify(v))
+              }}
+              placeholder='Website name'
+              className='h-9 border-0 bg-zinc-800/60'
+            />
+          </Field>
+
+          <Field label='Slug'>
+            <Input
+              value={slug}
+              onChange={e => setSlug(slugify(e.currentTarget.value))}
+              placeholder='auto-generated-from-title'
+              className='h-9 border-0 bg-zinc-800/60'
+            />
+          </Field>
+
+          <Field label='Category (suggested)'>
+            <Input
+              value={category}
+              onChange={e => setCategory(e.currentTarget.value)}
+              placeholder='e.g., Productivity'
+              className='h-9 border-0 bg-zinc-800/60'
+            />
+          </Field>
+
+          <Field label='Description'>
+            <Textarea
+              value={description}
+              onChange={e => setDescription(e.currentTarget.value)}
+              rows={5}
+              placeholder='A detailed paragraph about what the website does…'
+              className='border-0 bg-zinc-800/60'
+            />
+          </Field>
+
+          <Field label='Favicon URL'>
+            <Input
+              value={faviconUrl}
+              onChange={e => setFaviconUrl(e.currentTarget.value)}
+              placeholder='https://…/favicon.ico'
+              className='h-9 border-0 bg-zinc-800/60'
+            />
+          </Field>
+
+          <div className='pt-2'>
+            <Button
+              type='submit'
+              disabled={
+                !normalized?.canonicalUrl ||
+                !title.trim() ||
+                !slug.trim() ||
+                !description.trim() ||
+                busySubmit
+              }
+              className='inline-flex w-full items-center gap-2 text-white'
+              style={{
+                background: 'linear-gradient(135deg, #FF6B57, #FF8F69)'
+              }}
+            >
+              {busySubmit ? (
+                <>
+                  <Loader2 className='h-4 w-4 animate-spin' /> Saving…
+                </>
+              ) : status === 'found' ? (
+                <>
+                  <PlusCircle className='h-4 w-4' /> Add to {SYSTEM_BOARD_SLUG}
+                </>
+              ) : (
+                <>
+                  <PlusCircle className='h-4 w-4' /> Create & add
+                </>
+              )}
+            </Button>
+          </div>
+
+          {/* Seed board availability note */}
+          {seedBoard === null && (
+            <p className='text-xs text-amber-300'>
+              Heads up: Board <b>{SYSTEM_BOARD_SLUG}</b> for owner{' '}
+              <b>{SYSTEM_OWNER}</b> was not found. Create it (public) first or
+              change the constants at the top of this page.
+            </p>
+          )}
+        </form>
+
+        {/* Small favicon preview */}
+        {faviconUrl ? (
+          <div className='flex items-center gap-2 text-xs text-zinc-400'>
+            <span>Favicon preview:</span>
+            <img
+              src={faviconUrl}
+              alt=''
+              width={16}
+              height={16}
+              className='rounded'
+            />
+          </div>
+        ) : null}
       </div>
     </main>
+  )
+}
+
+/** ---------- subcomponents ---------- */
+function Field({
+  label,
+  children
+}: {
+  label: string
+  children: React.ReactNode
+}) {
+  return (
+    <label className='block'>
+      <div className='mb-1 text-xs uppercase tracking-wide text-zinc-400'>
+        {label}
+      </div>
+      <div className='rounded-xl border border-zinc-800 bg-zinc-900/70 p-2'>
+        {children}
+      </div>
+    </label>
   )
 }

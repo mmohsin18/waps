@@ -157,7 +157,7 @@ export default function WapsPage() {
           <button
             key={t}
             className={clsx(
-              'waps-chip hover:opacity-100',
+              'waps-chip flex items-center hover:opacity-100',
               selectedTag === t
                 ? 'border-transparent bg-[var(--waps-brand)]'
                 : 'opacity-80'

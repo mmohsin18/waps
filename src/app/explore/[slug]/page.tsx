@@ -2,6 +2,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 import { useMutation, useQuery } from 'convex/react'
 import { Check, ExternalLink, Plus } from 'lucide-react'
 import Image from 'next/image'
@@ -69,7 +70,7 @@ export default function SiteDetailPage() {
   if (!site) {
     return (
       <div className='waps-bg min-h-screen px-4 py-6 text-white md:px-6 md:py-10 lg:px-8'>
-        <p className='opacity-70'>Loading…</p>
+        <Skeleton className='h-12 w-full rounded-xl' />
       </div>
     )
   }

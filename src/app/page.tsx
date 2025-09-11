@@ -6,6 +6,7 @@ import WaitlistForm from '@/components/Features/WaitlistForm'
 import { Badge } from '@/components/ui/badge'
 import { motion } from 'framer-motion'
 import {
+  ArrowDown,
   Ghost,
   Globe,
   Link2,
@@ -35,7 +36,7 @@ function useParallax() {
 }
 
 export default function LandingPage() {
-  const { installPwa: promptInstall } = usePwaInstall()
+  const { installed, install } = usePwaInstall()
 
   const p = useParallax()
 
@@ -281,11 +282,25 @@ export default function LandingPage() {
                 access on your phone.
               </p>
             </div>
-            <div className='flex gap-5 text-xs'>
-              <WapsButton variant={'glow'} onClick={promptInstall}>
+            <div className='flex justify-between gap-5 text-xs'>
+              <WapsButton
+                variant={'glow'}
+                onClick={() => install()}
+                disabled={installed}
+              >
                 <Ghost className='mr-2 h-4 w-4' />
-                Download
+                Install
               </WapsButton>
+              <Link
+                href={
+                  'https://github.com/mmohsin18/waps/releases/download/Apk/Waps.apk'
+                }
+              >
+                <WapsButton variant={'outline'} disabled={installed}>
+                  <ArrowDown className='mr-2 h-4 w-4' />
+                  Download
+                </WapsButton>
+              </Link>
             </div>
           </div>
         </div>

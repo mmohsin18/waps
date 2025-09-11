@@ -91,7 +91,7 @@ export default function ContactPage() {
                 value={name}
                 onChange={e => setName(e.currentTarget.value)}
                 placeholder='Your name'
-                className='h-9 border-0 bg-zinc-800/60 text-white placeholder:text-white/60'
+                className='h-9 border-0 bg-transparent text-white placeholder:text-white/60 focus-visible:ring-0'
                 required
               />
             </Field>
@@ -102,7 +102,7 @@ export default function ContactPage() {
                 value={email}
                 onChange={e => setEmail(e.currentTarget.value)}
                 placeholder='you@example.com'
-                className='h-9 border-0 bg-zinc-800/60 text-white placeholder:text-white/60'
+                className='h-9 border-0 bg-transparent text-white placeholder:text-white/60 focus-visible:ring-0'
                 required
               />
             </Field>
@@ -112,7 +112,7 @@ export default function ContactPage() {
                 value={subject}
                 onChange={e => setSubject(e.currentTarget.value)}
                 placeholder='What’s this about?'
-                className='h-9 border-0 bg-zinc-800/60 text-white placeholder:text-white/60'
+                className='h-9 border-0 bg-transparent text-white placeholder:text-white/60 focus-visible:ring-0'
               />
             </Field>
 
@@ -122,7 +122,7 @@ export default function ContactPage() {
                 onChange={e => setMessage(e.currentTarget.value)}
                 placeholder='Tell us a little more…'
                 rows={6}
-                className='border-0 bg-zinc-800/60 text-white placeholder:text-white/60'
+                className='border-0 bg-transparent text-white placeholder:text-white/60 focus-visible:ring-0'
                 required
               />
             </Field>
